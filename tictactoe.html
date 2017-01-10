@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>	
+
+
+<meta charset="utf-8">
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+
+var answer;
+var guesses = 0;
+var hint = "";
+
+function randomNumber(seed)
+{
+	seed = seed || 10;
+	return Math.floor(Math.random() * seed + 1);
+}
+
+function checkGuess(guess)
+{
+	if(guesses > 0)
+	{
+		if(guess == answer)
+		{
+			hint = 'You win!';
+			guesses = 0;
+		}
+		else if(guess > answer)
+		{	
+			hint = 'Lower..';
+			guesses--;
+		}
+		else if(guess < answer)
+		{
+			hint = 'Higher..';
+			guesses--;
+		}
+
+		if(guesses == 0)
+		{
+			hint = 'You lose! Game over';
+		}
+	}
+
+	return hint;
+}
+
+$(document).ready(
+	function()
+	{
+		answer = randomNumber(10);
+		guesses = 3;
+
+		$('.hintvalue').html(answer);
+
+		$('#guess').click(function()
+		{
+			var guess = $("input[name='guess']").val();
+			var guessHint = checkGuess(guess);
+
+			$('.hint').html("Hint: " + guessHint);			
+			$('.guesscount').html("Guesses left: " + guesses);
+		});
+	}
+);
+
+
+</script>
+
+</head>
+
+<body>
+	<div class="hint">Guess a number</div>
+	<div class="hintvalue"></div>
+	<div class="guesscount"></div>
+
+	<br/>
+
+	<form id="game_form" name="game_form">
+		<label for="guess">Guess:</label>
+		<input type="text" name="guess" />
+		<br/>
+		<a href="#" value="Guess!" id="guess" class="button">Guess</a>
+	</form>
+</body>
+
+</html>
