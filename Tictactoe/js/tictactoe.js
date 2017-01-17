@@ -22,6 +22,10 @@ function init(id)
 
 function clickHandler(event) {
     var rect = canvas.getBoundingClientRect();
+
+     // canvas.offsetLeft;
+     // canvas.offsetTop;
+
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
 
