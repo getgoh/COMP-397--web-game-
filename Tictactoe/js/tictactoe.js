@@ -3,6 +3,17 @@ var context;
 var width;
 var height;
 
+var board = [
+				[0, 0, 0],
+				[0, 0, 0],
+				[0, 0, 0]
+			];
+
+function initializeBoard()
+{
+
+}
+
 function init(id)
 {
 	// get the canvas element
@@ -20,6 +31,8 @@ function init(id)
 	drawBoard();
 }
 
+var turn = 0; // 0 = x, 1 = y
+
 function clickHandler(event) {
     var rect = canvas.getBoundingClientRect();
 
@@ -32,11 +45,77 @@ function clickHandler(event) {
     console.log('cx = ' + event.clientX);
     console.log('cy = ' + event.clientY);
     
-    drawX(x, y);
+    if(turn == 0)
+    {
+    	drawX(x, y);
+    	markPos(x, y);
+    	turn = 1;
+    }
+    else
+    {
+    	drawO(x, y);
+    	markPos(x, y);
+    	turn = 0;
+    }
+
+	checkWinner();
+
+}
+
+function markPos(x, y) {
+	var w3 = width / 3;
+	var h3 = height / 3;
+
+	var ix = Math.floor(x/w3);
+	var iy = Math.floor(y/h3);
+
+	if(turn == 0)
+	{
+		board[iy][ix] = -1;
+	}
+	else
+	{
+		board[iy][ix] = 1;	
+	}
+
+
+
+	console.log(ix + ", " + iy);
+	console.log(board);
+}
+
+function checkWinner()
+{
+	// console.log("board[0][0] = " + board[0][0]);
+	// console.log("board[0][1] = " + board[0][1]);
+	// console.log("board[0][2] = " + board[0][2]);
+
+	for(var xx = 0; xx <= 2; xx++)
+	{
+		var sum = 0;
+		for(var yy = 0; yy <= 2; yy++)
+		{
+			console.log("board[" + xx + "][" + yy + "] : " + board[xx][yy]);
+			sum += board[xx][yy];
+			if(sum == 3)
+			{
+				console.log("O wins!!");
+			}
+			else if(sum == -3)
+			{
+				console.log("X wins!!");	
+			}
+		}
+		console.log("sum = " + sum);
+	}
+	
+	console.log(board);
 }
 
 function drawBoard() 
 {
+	console.log(board);
+
 	context.beginPath();
 	context.strokeStyle = 'black';
 	context.lineWidth = 4;
@@ -69,6 +148,31 @@ function drawBoard()
 
 	// context.moveTo(0, hl2);
 	// context.lineTo(width, hl2);
+
+	context.stroke();
+	context.closePath();
+}
+
+function drawO(x, y)
+{
+	context.beginPath();
+	context.strokeStyle = '#ff0000';
+	context.lineWidth = 4;	
+
+	var w3 = width / 3;
+	var h3 = height / 3;
+
+	var ix = Math.floor(x/w3);
+	var iy = Math.floor(y/h3);
+
+	var x0 = ix * w3;
+	var x1 = x0 + w3;
+
+	var y0 = iy * h3;
+	var y1 = y0 + h3;
+
+
+	context.arc((x0 + x1)/2, (y0+y1)/2, 40, 0, Math.PI * 2, false);
 
 	context.stroke();
 	context.closePath();

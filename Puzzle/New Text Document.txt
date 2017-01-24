@@ -1,0 +1,333 @@
+getContext, string, function getContext() {
+    [native code]
+}
+toDataURL, string, function toDataURL() {
+    [native code]
+}
+toBlob, string, function toBlob() {
+    [native code]
+}
+mozGetAsFile, string, function mozGetAsFile() {
+    [native code]
+}
+captureStream, string, function captureStream() {
+    [native code]
+}
+width, string, 200
+height, string, 100
+mozOpaque, string, false
+mozPrintCallback, string, null
+click, string, function click() {
+    [native code]
+}
+focus, string, function focus() {
+    [native code]
+}
+blur, string, function blur() {
+    [native code]
+}
+title, string, 
+lang, string, 
+dir, string, 
+dataset, string, [object DOMStringMap]
+innerText, string, 
+itemScope, string, false
+itemType, string, 
+itemId, string, 
+itemRef, string, 
+itemProp, string, 
+properties, string, [object HTMLPropertiesCollection]
+itemValue, string, null
+hidden, string, false
+tabIndex, string, -1
+accessKey, string, 
+accessKeyLabel, string, 
+draggable, string, false
+contentEditable, string, inherit
+isContentEditable, string, false
+contextMenu, string, null
+spellcheck, string, false
+style, string, [object CSS2Properties]
+oncopy, string, null
+oncut, string, null
+onpaste, string, null
+offsetParent, string, [object HTMLBodyElement]
+offsetTop, string, 8
+offsetLeft, string, 8
+offsetWidth, string, 202
+offsetHeight, string, 102
+onabort, string, null
+onblur, string, null
+onfocus, string, null
+oncanplay, string, null
+oncanplaythrough, string, null
+onchange, string, null
+onclick, string, null
+oncontextmenu, string, null
+ondblclick, string, null
+ondrag, string, null
+ondragend, string, null
+ondragenter, string, null
+ondragleave, string, null
+ondragover, string, null
+ondragstart, string, null
+ondrop, string, null
+ondurationchange, string, null
+onemptied, string, null
+onended, string, null
+oninput, string, null
+oninvalid, string, null
+onkeydown, string, null
+onkeypress, string, null
+onkeyup, string, null
+onload, string, null
+onloadeddata, string, null
+onloadedmetadata, string, null
+onloadstart, string, null
+onmousedown, string, null
+onmouseenter, string, null
+onmouseleave, string, null
+onmousemove, string, null
+onmouseout, string, null
+onmouseover, string, null
+onmouseup, string, null
+onpause, string, null
+onplay, string, null
+onplaying, string, null
+onprogress, string, null
+onratechange, string, null
+onreset, string, null
+onresize, string, null
+onscroll, string, null
+onseeked, string, null
+onseeking, string, null
+onselect, string, null
+onshow, string, null
+onstalled, string, null
+onsubmit, string, null
+onsuspend, string, null
+ontimeupdate, string, null
+onvolumechange, string, null
+onwaiting, string, null
+onmozfullscreenchange, string, null
+onmozfullscreenerror, string, null
+onmozpointerlockchange, string, null
+onmozpointerlockerror, string, null
+onerror, string, null
+getAttributeNames, string, function getAttributeNames() {
+    [native code]
+}
+getAttribute, string, function getAttribute() {
+    [native code]
+}
+getAttributeNS, string, function getAttributeNS() {
+    [native code]
+}
+setAttribute, string, function setAttribute() {
+    [native code]
+}
+setAttributeNS, string, function setAttributeNS() {
+    [native code]
+}
+removeAttribute, string, function removeAttribute() {
+    [native code]
+}
+removeAttributeNS, string, function removeAttributeNS() {
+    [native code]
+}
+hasAttribute, string, function hasAttribute() {
+    [native code]
+}
+hasAttributeNS, string, function hasAttributeNS() {
+    [native code]
+}
+hasAttributes, string, function hasAttributes() {
+    [native code]
+}
+closest, string, function closest() {
+    [native code]
+}
+matches, string, function matches() {
+    [native code]
+}
+webkitMatchesSelector, string, function webkitMatchesSelector() {
+    [native code]
+}
+getElementsByTagName, string, function getElementsByTagName() {
+    [native code]
+}
+getElementsByTagNameNS, string, function getElementsByTagNameNS() {
+    [native code]
+}
+getElementsByClassName, string, function getElementsByClassName() {
+    [native code]
+}
+mozMatchesSelector, string, function mozMatchesSelector() {
+    [native code]
+}
+setCapture, string, function setCapture() {
+    [native code]
+}
+releaseCapture, string, function releaseCapture() {
+    [native code]
+}
+mozRequestPointerLock, string, function mozRequestPointerLock() {
+    [native code]
+}
+getAttributeNode, string, function getAttributeNode() {
+    [native code]
+}
+setAttributeNode, string, function setAttributeNode() {
+    [native code]
+}
+removeAttributeNode, string, function removeAttributeNode() {
+    [native code]
+}
+getAttributeNodeNS, string, function getAttributeNodeNS() {
+    [native code]
+}
+setAttributeNodeNS, string, function setAttributeNodeNS() {
+    [native code]
+}
+getClientRects, string, function getClientRects() {
+    [native code]
+}
+getBoundingClientRect, string, function getBoundingClientRect() {
+    [native code]
+}
+scrollIntoView, string, function scrollIntoView() {
+    [native code]
+}
+scroll, string, function scroll() {
+    [native code]
+}
+scrollTo, string, function scrollTo() {
+    [native code]
+}
+scrollBy, string, function scrollBy() {
+    [native code]
+}
+insertAdjacentHTML, string, function insertAdjacentHTML() {
+    [native code]
+}
+querySelector, string, function querySelector() {
+    [native code]
+}
+querySelectorAll, string, function querySelectorAll() {
+    [native code]
+}
+mozRequestFullScreen, string, function mozRequestFullScreen() {
+    [native code]
+}
+remove, string, function remove() {
+    [native code]
+}
+tagName, string, CANVAS
+id, string, myCanvas
+className, string, 
+classList, string, 
+attributes, string, [object NamedNodeMap]
+onwheel, string, null
+scrollTop, string, 0
+scrollLeft, string, 0
+scrollWidth, string, 200
+scrollHeight, string, 100
+clientTop, string, 1
+clientLeft, string, 1
+clientWidth, string, 200
+clientHeight, string, 100
+scrollTopMax, string, 0
+scrollLeftMax, string, 0
+innerHTML, string, 
+
+outerHTML, string, <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+</canvas>
+previousElementSibling, string, null
+nextElementSibling, string, [object HTMLScriptElement]
+children, string, [object HTMLCollection]
+firstElementChild, string, null
+lastElementChild, string, null
+childElementCount, string, 0
+hasChildNodes, string, function hasChildNodes() {
+    [native code]
+}
+insertBefore, string, function insertBefore() {
+    [native code]
+}
+appendChild, string, function appendChild() {
+    [native code]
+}
+replaceChild, string, function replaceChild() {
+    [native code]
+}
+removeChild, string, function removeChild() {
+    [native code]
+}
+normalize, string, function normalize() {
+    [native code]
+}
+cloneNode, string, function cloneNode() {
+    [native code]
+}
+isEqualNode, string, function isEqualNode() {
+    [native code]
+}
+compareDocumentPosition, string, function compareDocumentPosition() {
+    [native code]
+}
+contains, string, function contains() {
+    [native code]
+}
+lookupPrefix, string, function lookupPrefix() {
+    [native code]
+}
+lookupNamespaceURI, string, function lookupNamespaceURI() {
+    [native code]
+}
+isDefaultNamespace, string, function isDefaultNamespace() {
+    [native code]
+}
+nodeType, string, 1
+nodeName, string, CANVAS
+baseURI, string, file:///C:/Users/arben/Desktop/dev/fbgad/puzzle/t.html
+ownerDocument, string, [object HTMLDocument]
+parentNode, string, [object HTMLBodyElement]
+parentElement, string, [object HTMLBodyElement]
+childNodes, string, [object NodeList]
+firstChild, string, [object Text]
+lastChild, string, [object Text]
+previousSibling, string, [object Text]
+nextSibling, string, [object Text]
+nodeValue, string, null
+textContent, string, 
+
+namespaceURI, string, http://www.w3.org/1999/xhtml
+prefix, string, null
+localName, string, canvas
+ELEMENT_NODE, string, 1
+ATTRIBUTE_NODE, string, 2
+TEXT_NODE, string, 3
+CDATA_SECTION_NODE, string, 4
+ENTITY_REFERENCE_NODE, string, 5
+ENTITY_NODE, string, 6
+PROCESSING_INSTRUCTION_NODE, string, 7
+COMMENT_NODE, string, 8
+DOCUMENT_NODE, string, 9
+DOCUMENT_TYPE_NODE, string, 10
+DOCUMENT_FRAGMENT_NODE, string, 11
+NOTATION_NODE, string, 12
+DOCUMENT_POSITION_DISCONNECTED, string, 1
+DOCUMENT_POSITION_PRECEDING, string, 2
+DOCUMENT_POSITION_FOLLOWING, string, 4
+DOCUMENT_POSITION_CONTAINS, string, 8
+DOCUMENT_POSITION_CONTAINED_BY, string, 16
+DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC, string, 32
+addEventListener, string, function addEventListener() {
+    [native code]
+}
+removeEventListener, string, function removeEventListener() {
+    [native code]
+}
+dispatchEvent, string, function dispatchEvent() {
+    [native code]
+}
