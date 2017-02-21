@@ -214,7 +214,10 @@ function drawPart(lives)
         case 3: drawHead(); break;
         case 2: drawBody(); break;
         case 1: drawHands(); break;
-        case 0: drawFeet(); break;
+        case 0: 
+            drawFeet();
+            createjs.Tween.get(stage, {override: true}).wait(3000).call(gameOver);
+        break;
     }
 }
 
