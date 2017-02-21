@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+</head>
+
+<body onload="init()">
+
+<canvas id="canvas" width="400" height="300" style="border: black solid 1px"></canvas>
+<h3 id="txt"></h3>
+
+</body>
+
+<script>
+    var stage;
+    var circle;
+    var txt;
+
+    function init() {
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        createjs.Ticker.addEventListener("tick", handleTick);
+        createjs.Ticker.setFPS(60);
+        txt = document.getElementById('txt');
+        start();
+    }
+    function handleTick(e) {
+        stage.update();
+    }
+    function start() {
+        stage.enableMouseOver();
+
+        // create circle
+        circle = new createjs.Shape();
+        circle.graphics.beginFill('#0000FF').drawCircle(0, 0, 50);
+        circle.set({x:stage.canvas.width / 4});
+        circle.x = stage.canvas.width / 4;
+        circle.y = stage.canvas.height / 4;
+        stage.addChild(circle);
+
+        //RECTANGLE
+        rectangle = new createjs.Shape();
+        rectangle.graphics.beginStroke('#000');
+        rectangle.graphics.beginFill('#FF0000');
+        rectangle.graphics.drawRect(0, 0, 80, 80);
+        rectangle.set({x:stage.canvas.width / 4});
+        rectangle.x = (stage.canvas.height / 4) * 3;
+        rectangle.y = (stage.canvas.height / 4) - 40;
+        stage.addChild(rectangle);
+
+        //TRIANGLE
+        var tri = new createjs.Shape();
+        tri.graphics.beginStroke('#000');
+        tri.graphics.beginFill('#e2e532');
+        tri.graphics.moveTo(50, 0)
+                .lineTo(0, 100)
+                .lineTo(100, 100)
+                .lineTo(50, 0);
+        tri.x = (stage.canvas.height / 4) - 25;
+        tri.y = stage.canvas.height / 2;
+        stage.addChild(tri);
+
+        // rounded-rect
+        roundedRectangle = new createjs.Shape();
+        roundedRectangle.graphics.beginStroke('#000');
+        roundedRectangle.graphics.beginFill('#379649');
+        roundedRectangle.graphics.drawRoundRect(0,0,80,80,20);
+        roundedRectangle.x = (stage.canvas.height / 4) * 3;
+        roundedRectangle.y = (stage.canvas.height / 2) + 10;
+        stage.addChild(roundedRectangle);
+
+
+        // mouseover cursors
+        circle.cursor = 'not-allowed';
+        rectangle.cursor = 'all-scroll';
+        tri.cursor = 'help';
+        roundedRectangle.cursor = 'wait';
+
+        // mouseover events
+        circle.addEventListener("mouseover", function (e) { circle.alpha = .5; txt.innerText = 'Shape: circle \r\ncolor: blue\r\n cursor: not-allowed'; });
+        circle.addEventListener("mouseout", function (e) { circle.alpha = 1; });
+
+        rectangle.addEventListener("mouseover", function (e) { rectangle.alpha = .5; txt.innerText = 'Shape: square\r\n color: red\r\n cursor: all-scroll'; });
+        rectangle.addEventListener("mouseout", function (e) { rectangle.alpha = 1;});
+
+        tri.addEventListener("mouseover", function (e) { tri.alpha = .5; txt.innerText = 'Shape: triangle\r\n color: yellow(ish)\r\n cursor: help'; });
+        tri.addEventListener("mouseout", function (e) { tri.alpha = 1;});
+
+        roundedRectangle.addEventListener("mouseover", function (e) { roundedRectangle.alpha = .5; txt.innerText = 'Shape: rounded-rectangle\r\n color: green\r\n cursor: wait'; });
+        roundedRectangle.addEventListener("mouseout", function (e) { roundedRectangle.alpha = 1;});
+    }
+</script>
+</html>

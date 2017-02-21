@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+</head>
+
+<body onload="init()">
+
+<canvas id="canvas" width="1000" height="800" style="border: black solid 1px"></canvas>
+
+</body>
+
+<script>
+    var stage;
+    function init() {
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        createjs.Ticker.addEventListener("tick", handleTick);
+        createjs.Ticker.setFPS(60);
+        start();
+    }
+
+    
+
+    function handleTick(e) {
+        
+        handleBfly1();
+        
+        handleBfly2();
+        
+        stage.update();
+    }
+
+    function handleBfly2()
+    {
+        var dirX = 'right';
+        var dirY = 'down';
+
+        // X
+        if(butterfly2.x >= butterfly3.x)
+        {
+            dirX = 'left';
+        }
+        if(butterfly2.x <= 0)
+        {
+            dirX = 'right';
+        }
+
+        if(dirX == 'right')
+        {
+            butterfly2.x += 2;    
+        }
+        else
+        {
+            butterfly2.x -= 2;
+        }
+
+        // Y
+        if(butterfly2.y >= 300)
+        {
+            dirY = 'up';
+        }
+        if(butterfly2.y <= 0)
+        {
+            dirY = 'down';
+        }
+
+        if(dirY == 'down')
+        {
+            butterfly2.y += 2;    
+        }
+        else
+        {
+            butterfly2.y -= 2;
+        }
+    }
+
+    function handleBfly1()
+    {
+        var dirX = 'right';
+        var dirY = 'down';
+
+        // X
+        if(butterfly1.x >= butterfly3.x)
+        {
+            dirX = 'left';
+        }
+        if(butterfly1.x <= 0)
+        {
+            dirX = 'right';
+        }
+
+        if(dirX == 'right')
+        {
+            butterfly1.x += 5;    
+        }
+        else
+        {
+            butterfly1.x -= 5;
+        }
+
+        // Y
+        if(butterfly1.y >= 300)
+        {
+            dirY = 'up';
+        }
+        if(butterfly1.y <= 0)
+        {
+            dirY = 'down';
+        }
+
+        if(dirY == 'down')
+        {
+            butterfly1.y += 5;    
+        }
+        else
+        {
+            butterfly1.y -= 5;
+        }
+    }
+
+    function start() {
+        drawButterflies();
+    }
+    function drawButterflies() {
+        var imgPath = 'images/butterfly.png';
+        butterfly1 = new createjs.Bitmap(imgPath);
+        butterfly2 = new createjs.Bitmap(imgPath);
+        butterfly3 = new createjs.Bitmap(imgPath);
+        butterfly2.x = 200;
+        butterfly3.x = 400;
+        stage.addChild(butterfly1, butterfly2, butterfly3);
+        //stage.setChildIndex(butterfly1, stage.children.length - 1);
+        stage.update();
+        //setTimeout(moveButterfly, 1000);
+    }
+    function moveButterfly() {
+        butterfly2.y += 200;
+    }
+
+
+</script>
+
+</html>

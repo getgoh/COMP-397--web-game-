@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+    <script src="../lib/tweenjs-0.5.1.min.js"></script>
+</head>
+
+<body onload="init()">
+
+<canvas id="canvas" width="1000" height="800" style="border: black solid 1px"></canvas>
+
+</body>
+
+<script>
+    var stage;
+    function init() {
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        createjs.Ticker.addEventListener("tick", handleTick);
+        createjs.Ticker.setFPS(60);
+        start();
+    }
+
+    
+
+    function handleTick(e) 
+    {
+        moveSad(sad1);
+        moveSad(sad2);
+        moveSad(sad3);
+        moveSad(sad4);
+
+        stage.update();
+    }
+
+    // moveX
+    function moveSad(sad)
+    {
+    	switch(sad.id)
+    	{
+    		case 1:
+    			if(sad.y <= 200)
+    				sad.y += 1;
+    		break;
+    		case 2:
+    			if(sad.y >= 0)
+    				sad.y -= 1;
+    		break;
+    		case 3:
+    			if(sad.y <= 200)
+    				sad.y += 1;
+    		break;
+    		case 4:
+    			if(sad.y >= 0)
+    				sad.y -= 1;
+    		break;
+    	}
+    }
+
+    function start() {
+        drawSads();
+    }
+
+    // drawX
+    function drawSads() {
+    	// 350 x 375
+        var imgPath = 'images/a.gif';
+        sad1 = new createjs.Bitmap(imgPath);
+        sad2 = new createjs.Bitmap(imgPath);
+        sad3 = new createjs.Bitmap(imgPath);
+        sad4 = new createjs.Bitmap(imgPath);
+
+        sad5 = new createjs.Bitmap(imgPath);
+
+        // set ids for access..
+        sad1.id = 1;
+        sad2.id = 2;
+        sad3.id = 3;
+        sad4.id = 4;
+
+
+        // make them smaller (scale)
+        sad1.scaleX = .5;
+        sad2.scaleX = .5;
+        sad3.scaleX = .5;
+        sad4.scaleX = .5;
+
+        sad1.scaleY = .5;
+        sad2.scaleY = .5;
+        sad3.scaleY = .5;
+        sad4.scaleY = .5;
+
+        sad5.scaleX = .01; 
+        sad5.scaleY = .01;
+
+
+        // set initial image locations
+        sad2.x = 200;
+        sad3.x = 400;
+        sad4.x = 600;
+
+        sad2.y = 200;
+        sad3.y = 0;
+        sad4.y = 200;
+
+        sad5.x = 400;
+        sad5.y = 400;
+
+        tweenSad5(sad5);
+
+        stage.addChild(sad1, sad2, sad3, sad4, sad5);
+        stage.update();
+        tweenSads();
+    }
+
+    var tox = 400;
+    var toy = 400;
+    var xdir = 'left';
+    var ydir = 'up';
+
+    function tweenSad5(sad)
+    {
+    	createjs.Tween.get(sad).to({y: toy, x: tox}, moveTime).call(resetSad,[sad],this);	
+    }
+
+    var moveTime = 1500;
+
+    function tweenSads()
+    {
+    	 createjs.Tween.get(sad1).to({y: 200}, moveTime).call(resetSad,[sad1],this);
+    	 createjs.Tween.get(sad2).to({y: 0}, moveTime).call(resetSad,[sad2],this);
+    	 createjs.Tween.get(sad3).to({y: 200}, moveTime).call(resetSad,[sad3],this);
+    	 createjs.Tween.get(sad4).to({y: 0}, moveTime).call(resetSad,[sad4],this);
+    }
+
+    function resetSad(sad)
+    {
+    	switch(sad.id)
+		{
+			case 1:
+				createjs.Tween.get(sad).to({y: 0}, moveTime);
+			break;
+			case 2:
+				createjs.Tween.get(sad).to({y: 200}, moveTime);
+			break;
+			case 3:
+				createjs.Tween.get(sad).to({y: 0}, moveTime);
+			break;
+			case 4:
+				createjs.Tween.get(sad).to({y: 200}, moveTime);
+			break;
+		}
+    }
+    
+
+
+</script>
+
+</html>

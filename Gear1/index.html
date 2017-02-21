@@ -1,0 +1,182 @@
+<html>
+<head>
+
+<script src="lib/easeljs-0.7.1.min.js"></script>
+<script src="lib/tweenjs-0.5.1.min.js"></script>
+
+<script>
+
+	function init()
+	{
+		stage = new createjs.Stage(document.getElementById('canvas'));
+	    createjs.Ticker.addEventListener("tick", handleTick);
+	    createjs.Ticker.setFPS(60);
+
+		draw();
+		drawGear2();
+	}
+
+	function handleTick(e) {
+        stage.update();
+    }
+
+
+function draw()
+{
+	// parameters (they will be function arguments when we refactor)
+	var INNER_RADIUS = 50;
+	var OUTER_RADIUS = 100;
+	var NR_TEETH = 16;
+
+	var tooth_angle = Math.PI * 2/NR_TEETH;
+
+	var vertices = [];
+
+	// build the vertex array
+	for(var i=0; i <  NR_TEETH; i++)
+	{
+		 // angles to the three vertices
+		var start_angle = tooth_angle * i;
+		var end_angle = start_angle + tooth_angle;
+		var mid_angle = start_angle + tooth_angle / 2;
+
+		var vertex1 = getVertex(INNER_RADIUS, start_angle);
+		var vertex2 = getVertex(OUTER_RADIUS, mid_angle);
+		var vertex3 = getVertex(INNER_RADIUS, end_angle);
+
+
+
+		vertices.push(vertex1);
+		vertices.push(vertex2);
+		vertices.push(vertex3);
+
+
+	}
+
+	// GEAR
+    var gear = new createjs.Shape();
+    gear.graphics.beginStroke('#000');
+    gear.graphics.beginFill('#FFFF00');
+
+    gear.graphics.moveTo(vertices[0].x, vertices[0].y);
+
+    for(var i=0; i <  NR_TEETH; i++)
+	{
+		//gear.graphics.moveTo(vertices[3*i].x, vertices[3*i].y);
+		gear.graphics.lineTo(vertices[3*i + 1].x, vertices[3*i + 1].y);
+		gear.graphics.lineTo(vertices[3*i + 2].x, vertices[3*i + 2].y);
+	}
+
+	gear.x = 300;
+	gear.y = 190;
+	stage.addChild(gear);
+     
+}
+
+function drawGear2()
+{
+	// parameters (they will be function arguments when we refactor)
+	var INNER_RADIUS = 50;
+	var OUTER_RADIUS = 100;
+	var NR_TEETH = 5;
+
+	var INNER_GAP = 6;
+	var TOOTH_SIZE = 8;
+
+
+	var tooth_angle = Math.PI * 2/NR_TEETH;
+
+	var vertices = [];
+
+	var fac = 2;
+
+	// build the vertex array
+	for(var i=0; i <  NR_TEETH; i++)
+	{
+		 // angles to the three vertices
+		var start_angle = tooth_angle * i;
+		var mid_angle = start_angle + tooth_angle / 2;
+		var end_angle = start_angle + tooth_angle;
+
+
+		var vertex1 = getVertex(INNER_RADIUS, start_angle);
+
+
+		var vertex2 = getVertex(INNER_RADIUS, start_angle - fac);
+
+		
+		var vertex3 = getVertex(OUTER_RADIUS, mid_angle + fac);
+		//var vertex4 = getVertex(OUTER_RADIUS, mid_angle);
+
+		var vertex5 = getVertex(OUTER_RADIUS, mid_angle - fac);
+
+		var vertex6 = getVertex(INNER_RADIUS, end_angle + fac);
+
+
+		var vertex7 = getVertex(INNER_RADIUS, end_angle);
+
+
+
+		vertices.push(vertex1);
+
+		vertices.push(vertex2);
+
+		vertices.push(vertex3);
+		//vertices.push(vertex4);
+
+		vertices.push(vertex5);
+
+		vertices.push(vertex6);
+		vertices.push(vertex7);
+
+
+
+
+	}
+
+	// GEAR
+    var gear = new createjs.Shape();
+    gear.graphics.beginStroke('#000');
+    gear.graphics.beginFill('#FFFF00');
+
+    gear.graphics.moveTo(vertices[0].x, vertices[0].y);
+
+    for(var i=0; i <  NR_TEETH; i++)
+	{
+		var i1 = 7 * i;
+		var i2 = i1 + 1;
+		var i3 = i1 + 2;
+		var i4 = i1 + 3;
+		var i5 = i1 + 4;
+		var i6 = i1 + 5;
+
+		//gear.graphics.moveTo(vertices[3*i].x, vertices[3*i].y);
+		gear.graphics.lineTo(vertices[i1].x, vertices[i1].y);
+		gear.graphics.lineTo(vertices[i2].x, vertices[i2].y);
+		gear.graphics.lineTo(vertices[i3].x, vertices[i3].y);
+		gear.graphics.lineTo(vertices[i4].x, vertices[i4].y);
+		gear.graphics.lineTo(vertices[i5].x, vertices[i5].y);
+		gear.graphics.lineTo(vertices[i6].x, vertices[i6].y);
+	}
+
+	gear.x = 300;
+	gear.y = 400;
+	stage.addChild(gear);
+}
+
+function getVertex(radius, angle)
+{
+	return { x: radius * Math.cos(angle),
+			 y: radius * Math.sin(angle) }
+}
+
+</script>
+</head>
+
+<body onload="init()">
+
+	<canvas id="canvas" width="800" height="600" style="border: black solid 1px"></canvas>
+
+</body>
+
+</html>
