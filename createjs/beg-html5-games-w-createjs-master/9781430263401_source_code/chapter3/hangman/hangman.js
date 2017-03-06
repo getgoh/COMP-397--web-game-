@@ -206,6 +206,7 @@ function checkGame() {
     }
 }
 
+
 function drawPart(lives)
 {
     switch(lives)
@@ -216,21 +217,24 @@ function drawPart(lives)
         case 1: drawHands(); break;
         case 0: 
             drawFeet();
-            createjs.Tween.get(stage, {override: true}).wait(3000).call(gameOver);
+            gameOver();
+    
         break;
     }
 }
 
 function gameOver() {
-    //stage.removeAllChildren();
     var msg = win ? "YOU WIN!" : "YOU LOSE";
-    gameOverTxt = new createjs.Text(msg, "36px Arial");
-    gameOverTxt.color = win ? 'blue' : 'red';
-    gameOverTxt.textAlign = 'center';
-    gameOverTxt.textBaseline = 'middle';
-    gameOverTxt.x = stage.canvas.width / 2;
-    gameOverTxt.y = stage.canvas.height / 2;
-    stage.addChild(gameOverTxt);
+    var txt = new createjs.Text(msg, "bold 36px Arial");
+    txt.alpha = 0.01;
+    txt.color = win ? 'blue' : 'red';
+    txt.textAlign = 'center';
+    txt.textBaseline = 'middle';
+    txt.x = stage.canvas.width / 2;
+    txt.y = stage.canvas.height / 2;
+    stage.addChild(txt);
+    createjs.Tween.get(txt)
+        .to({alpha:1}, 2500);
 }
 
 function startGame() {

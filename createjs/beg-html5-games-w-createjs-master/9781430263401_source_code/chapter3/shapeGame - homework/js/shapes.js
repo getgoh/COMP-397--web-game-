@@ -7,121 +7,99 @@ function init() {
     stage = new createjs.Stage("canvas");
 
     drawShapes();
-
-    // buildShapes();
-    // setShapes();
     
     startGame();
 }
 
 function drawShapes()
 {
-    // create circle
+    // create target CIRCLE
     circle = new createjs.Shape();
-    circle.graphics.beginFill('#0000FF').drawCircle(0, 0, 50);
+    circle.graphics.beginStroke('#0000FF');
+    circle.graphics.beginFill('#FFF').drawCircle(0, 0, 50);
     circle.set({x:stage.canvas.width / 4});
     circle.x = (stage.canvas.width / 3) - 50;
     circle.y = stage.canvas.height / 4;
+    circle.targetX = circle.x + 25;
+    circle.targetY = circle.y + 25;
     stage.addChild(circle);
+    slots.push(circle);
 
-    //RECTANGLE
+    // create target RECTANGLE
     rectangle = new createjs.Shape();
-    rectangle.graphics.beginStroke('#000');
-    rectangle.graphics.beginFill('#FF0000');
+    rectangle.graphics.beginStroke('#FF0000');
+    rectangle.graphics.beginFill('#FFF');
     rectangle.graphics.drawRect(0, 0, 80, 80);
     rectangle.set({x:stage.canvas.width / 4});
     rectangle.x = (stage.canvas.width / 3) + 50;
     rectangle.y = stage.canvas.height/4 - 40;
+    rectangle.targetX = rectangle.x + 40;
+    rectangle.targetY = rectangle.y + 40;
     stage.addChild(rectangle);
+    slots.push(rectangle);
 
-    //TRIANGLE
+    // create target TRIANGLE
     tri = new createjs.Shape();
-    tri.graphics.beginStroke('#000');
-    tri.graphics.beginFill('#e2e532');
+    tri.graphics.beginStroke('#e2e532');
+    tri.graphics.beginFill('#FFF');
     tri.graphics.moveTo(50, 0)
             .lineTo(0, 100)
             .lineTo(100, 100)
             .lineTo(50, 0);
     tri.x = (stage.canvas.width / 3) + 200;
     tri.y = stage.canvas.height/4 - 50;
+    tri.targetX = tri.x + 50;
+    tri.targetY = tri.y + 50;
     stage.addChild(tri);
+    slots.push(tri);
 
-    // create circle
+    // create draggable CIRCLE
     circle2 = new createjs.Shape();
     circle2.graphics.beginFill('#0000FF').drawCircle(0, 0, 50);
+    circle2.regX = circle2.regY = 25;
     circle2.set({x:stage.canvas.width / 4});
-    circle2.x = (stage.canvas.width / 3) - 50;
-    circle2.y = (stage.canvas.height / 4) + 200;
+    circle2.x = circle2.homeX = (stage.canvas.width / 3) - 25;
+    circle2.y = circle2.homeY = (stage.canvas.height / 4) + 225;
+    circle2.addEventListener("mousedown", startDrag);
+    circle2.key = 0;
     stage.addChild(circle2);
 
-    //RECTANGLE
+    // create draggable RECTANGLE
     rectangle2 = new createjs.Shape();
     rectangle2.graphics.beginStroke('#000');
     rectangle2.graphics.beginFill('#FF0000');
+    rectangle2.regX = rectangle2.regY = 40;
     rectangle2.graphics.drawRect(0, 0, 80, 80);
     rectangle2.set({x:stage.canvas.width / 4});
-    rectangle2.x = (stage.canvas.width / 3) + 50;
-    rectangle2.y = (stage.canvas.height/4 - 40) + 200;
+    rectangle2.x = rectangle2.homeX = (stage.canvas.width / 3) + 90;
+    rectangle2.y = rectangle2.homeY = (stage.canvas.height/4) + 200;
+    rectangle2.addEventListener("mousedown", startDrag);
+    rectangle2.key = 1;
     stage.addChild(rectangle2);
 
-    //TRIANGLE
+    // create draggable TRIANGLE
     tri2 = new createjs.Shape();
     tri2.graphics.beginStroke('#000');
     tri2.graphics.beginFill('#e2e532');
+    tri2.regX = tri2.regY = 50;
     tri2.graphics.moveTo(50, 0)
             .lineTo(0, 100)
             .lineTo(100, 100)
             .lineTo(50, 0);
-    tri2.x = (stage.canvas.width / 3) + 200;
-    tri2.y = (stage.canvas.height/4 - 50) + 200;
+    tri2.x = tri2.homeX = (stage.canvas.width / 3) + 250;
+    tri2.y = tri2.homeY = (stage.canvas.height/4) + 200;
+    tri2.addEventListener("mousedown", startDrag);
+    tri2.key = 2;
     stage.addChild(tri2);
 }
 
-function buildShapes() {
-    var colors = ['blue', 'red', 'green', 'yellow'];
-    var i, shape, slot;
-    for (i = 0; i < 4; i++) {
-        //slots
-        slot = new createjs.Shape();
-        slot.graphics.beginStroke(colors[i]);
-        slot.graphics.beginFill(createjs.Graphics.getRGB(255, 255, 255, 1));
-        slot.graphics.drawRect(0, 0, 100, 100);
-        slot.regX = slot.regY = 50;
-        slot.key = i;
-        slot.y = 80;
-        slot.x = (i * 130) + 100;
-        stage.addChild(slot);
-        slots.push(slot);
-        //shapes
-        shape = new createjs.Shape();
-        shape.graphics.beginFill(colors[i]);
-        shape.graphics.drawRect(0, 0, 100, 100);
-        shape.regX = shape.regY = 50;
-        shape.key = i;
-        shapes.push(shape);
-    }
-}
-function setShapes() {
-    var i, r, shape;
-    var l = shapes.length;
-    for (i = 0; i < l; i++) {
-        r = Math.floor(Math.random() * shapes.length);
-        shape = shapes[r];
-        shape.homeY = 320;
-        shape.homeX = (i * 130) + 100;
-        shape.y = shape.homeY;
-        shape.x = shape.homeX;
-        shape.addEventListener("mousedown", startDrag);
-        stage.addChild(shape);
-        shapes.splice(r, 1);
-    }
-}
 function startGame() {
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", function (e) {
         stage.update();
     });
 }
+
 function startDrag(e) {
     var shape = e.target;
     var slot = slots[shape.key];
@@ -136,7 +114,7 @@ function startDrag(e) {
         if (slot.hitTest(pt.x, pt.y)) {
             shape.removeEventListener("mousedown",startDrag);
             score++;
-            createjs.Tween.get(shape).to({x:slot.x, y:slot.y}, 200, createjs.Ease.quadOut).call(checkGame);
+            createjs.Tween.get(shape).to({x:slot.targetX, y:slot.targetY}, 200, createjs.Ease.quadOut).call(checkGame);
             console.log('h');
         }
         else {
@@ -145,7 +123,18 @@ function startDrag(e) {
     });
 }
 function checkGame(){
-    if(score == 4){
-        alert('You Win!');
+    if(score == 3){
+        gameOver();
     }
+}
+function gameOver() {
+    //stage.removeAllChildren();
+    var msg = "You Win!";
+    gameOverTxt = new createjs.Text(msg, "36px Arial");
+    gameOverTxt.color = 'blue';
+    gameOverTxt.textAlign = 'center';
+    gameOverTxt.textBaseline = 'middle';
+    gameOverTxt.x = stage.canvas.width / 2;
+    gameOverTxt.y = stage.canvas.height / 2;
+    stage.addChild(gameOverTxt);
 }
