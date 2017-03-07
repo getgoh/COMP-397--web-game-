@@ -43,12 +43,12 @@
         stage.addChild(frank, villager1, villager2);
         var w = frank.image.width;
         var h = frank.image.height;
-        villager1.shadow = new createjs.Shadow('#000', 5, 5, 8);
+        villager1.shadow = new createjs.Shadow('#f20', 0, 0, 20);
         var blur = new createjs.BoxBlurFilter(5, 5, 1);
         frank.filters = [blur];
         frank.cache(0, 0, w, h);
-        var color = new createjs.ColorFilter(1, 0, 0, 1, 0, 0, 0, 0);
-        villager2.filters = [color, blur];
+        var color = new createjs.ColorFilter(0, 0, 1, 1, 0, 0, 0, 0);
+        villager2.filters = [blur, color];
         villager2.cache(0, 0, w + 10, h + 10);
         stage.update();
     }
