@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../lib/easeljs-0.7.1.min.js"></script>
+</head>
+
+<body onload="init()">
+
+<canvas id="canvas" width="1000" height="800"></canvas>
+
+</body>
+
+<script>
+
+    var NR_ROWS = 6;
+
+    var board = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [2, 1, 2, 2, 1, 1, 0],
+        [1 ,1 ,1 ,1 ,2 ,2 ,2]
+    ];
+    
+    function init() {
+        var win = checkForWin(1);
+        console.log("win=" + win);
+    }
+
+    function checkForWin(player)
+    {
+        var win = false;
+        win = checkForWinByRows(player);
+        win = win && checkForWinByColumns(player);
+
+        return win;
+    }
+
+    function checkForWinByRows(player)
+    {
+        var win = true;
+
+        for(var i=0;i<NR_ROWS;i++)
+        {
+
+        }
+
+        return win;
+    }
+
+    function checkForWinByColumns(player)
+    {
+        var win = false;
+
+        return win;
+    }
+</script>
+</html>
