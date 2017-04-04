@@ -3,6 +3,9 @@
 <head>
     <title></title>
     <script src="../lib/easeljs-0.7.1.min.js"></script>
+    <script src="mygame1.js"></script>
+    <script src="mygame2.js"></script>
+    <script src="mygame3_with_es6_class.js"></script>
     <script src="PulsingOrb.js"></script>
     <script src="pulsingOrbs.js"></script>
 </head>
@@ -10,6 +13,30 @@
 <body onload="init()">
 
 <canvas id="canvas" width="800" height="600" style="border: black solid 1px"></canvas>
+
+<script>
+	var obj1_mg1 = new mygame1(6,7);
+
+	var obj2_mg1 = new mygame1(3,3);
+
+	var obj1_mg2 = new mygame2(5,5);
+
+	var obj2_mg2 = new mygame2(20,10);
+
+	obj1_mg1.m1();
+	obj1_mg1.m2();
+	obj2_mg1.m1();
+	obj2_mg1.m2();
+
+	obj1_mg2.m1();
+	obj1_mg2.m2();
+	obj2_mg2.m1();
+	obj2_mg2.m2();
+
+	var obj1_mg3 = new MyGame3(42);
+
+	obj1_mg3.m1();
+</script>
 
 </body>
 

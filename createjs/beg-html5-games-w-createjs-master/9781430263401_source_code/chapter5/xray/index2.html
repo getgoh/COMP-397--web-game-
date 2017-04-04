@@ -13,7 +13,7 @@
 
 <script>
 
-    var NR_ROWS = 6;
+    var N_ROWS = 6;
 
     var board = [
         [0, 0, 0, 0, 0, 0, 0],
@@ -42,9 +42,17 @@
     {
         var win = true;
 
-        for(var i=0;i<NR_ROWS;i++)
+        for(var i=0;i<N_ROWS;i++)
         {
-
+            // check for win by row i
+            j = 0;
+            // find the first token of player in row i
+            while(board[i][j] != player)
+            {
+                j++;
+                if(j == N_COLS) // no tokens of player in row i
+                    break;
+            }
         }
 
         return win;
